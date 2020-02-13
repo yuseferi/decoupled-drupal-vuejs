@@ -1,0 +1,9 @@
+# Platform.sh services definition
+# See https://docs.platform.sh/configuration/services.html
+
+db:
+  type: mariadb:10.2
+  disk: 2048
+
+cache:
+  type: redis:5.0

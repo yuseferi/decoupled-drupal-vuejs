@@ -1,0 +1,25 @@
+# Platform.sh routes
+# See https://docs.platform.sh/configuration/routes.html
+
+"http://api.{default}/":
+  type: upstream
+  upstream: "api:http"
+  cache:
+    enabled: true
+
+    # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"http://{default}/":
+  type: upstream
+  upstream: vuejs:http
+  cache:
+    cookies:
+      - '*'
+    default_ttl: 0
+    enabled: true
+    headers:
+      - Accept
+      - Accept-Language
+  ssi:
+    enabled: false
